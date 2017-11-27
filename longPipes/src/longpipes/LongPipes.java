@@ -10,6 +10,10 @@ public class LongPipes {
     private boolean chemicalResistance;
     private int plasticGrade;
     private double baseCost;
+    private int colourPrint;
+    private boolean innerInsulation; //move me 
+    private boolean outerReinforcement; //Move these
+    private double totalCost;
 
     public LongPipes() {
     }
@@ -36,6 +40,10 @@ public class LongPipes {
         totalArea = areaOfCircle * lengthOfPipe;
         areaOfPipe = totalArea;
     }
+    
+    public void calculateTotalCost() {
+        totalCost = (baseCost * costMultiplier * quantityOfPipe);
+    } 
 
     public static double getBaseCost(int plasticGrade) {
         switch (plasticGrade) {
@@ -79,6 +87,10 @@ public class LongPipes {
         return chemicalResistance;
     }
 
+     public int getColour() {
+        return colourPrint;
+    }
+    
     //setters **finish later
     public void setOuterDiameter(double newDiameter) {
         outerDiameter = newDiameter;
@@ -86,6 +98,10 @@ public class LongPipes {
 
     public void setlengthOfPipe(double newLength) {
         lengthOfPipe = newLength;
+    }
+    
+    public void setColour(int newColour) {
+        colourPrint = newColour;
     }
 
     public void setQuantityOfPipe(int newQuantity) {

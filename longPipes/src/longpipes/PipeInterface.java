@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package longpipes;
+import java.util.*;
 
 /**
  *
@@ -31,14 +32,14 @@ public class PipeInterface extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         pipeGrade = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        innerInsulation = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        outerReinforcement = new javax.swing.JComboBox<>();
+        pipeColour = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
+        chemicalResistance = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         pipeLength = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -67,7 +68,7 @@ public class PipeInterface extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Avaliable Additional Options for Pipe"));
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        innerInsulation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
 
         jLabel5.setText("Inner Insulation ");
 
@@ -75,18 +76,18 @@ public class PipeInterface extends javax.swing.JFrame {
 
         jLabel7.setText("Outer Reinforcement");
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        outerReinforcement.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        pipeColour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2" }));
+        pipeColour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                pipeColourActionPerformed(evt);
             }
         });
 
         jLabel2.setText("Colour Print Number 0");
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        chemicalResistance.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,26 +98,26 @@ public class PipeInterface extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pipeColour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2))
                 .addGap(169, 169, 169)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(chemicalResistance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(innerInsulation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(161, 161, 161)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel7)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(outerReinforcement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -129,11 +130,11 @@ public class PipeInterface extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(pipeColour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(outerReinforcement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -141,11 +142,11 @@ public class PipeInterface extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chemicalResistance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(innerInsulation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
 
@@ -284,36 +285,74 @@ public class PipeInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        double Result;
-        double Length;
-        double outterDiameter;
+            double basicCost;
+        double totalCost;
+        double Length = 1;
+        double outerDiameter = 1;
         double innerDiameter;
+        int quantity = 1;
         double areaOfCircle;
         double totalArea;
-        int grade;
-        double costMultiplier;
+        int grade = 1;
+        double gradeCost;
+        double costMulitiplier = 0;
+
+        if (Length < 0.5 || Length > 6 ){
+            
+        }
+        
+        if (outerDiameter < 0.5 || outerDiameter > 20){
+            
+        }
+        
+        if (quantity < 1 || quantity > 20){
+            
+        }
         
         grade = pipeGrade.getSelectedIndex() + 1;
-        costMultiplier = LongPipes.getBaseCost(grade);
-        
+        gradeCost = LongPipes.getBaseCost(grade);
+
         Length = Integer.parseInt(pipeLength.getText()) / 0.0254;
-        outterDiameter = Integer.parseInt(pipeDiameter.getText());
-        innerDiameter = outterDiameter * 0.9;
-        areaOfCircle = Math.PI * (Math.pow(outterDiameter, 2) - Math.pow(innerDiameter, 2));
+        outerDiameter = Integer.parseInt(pipeDiameter.getText());
+        innerDiameter = outerDiameter * 0.9;
+        areaOfCircle = Math.PI * (Math.pow(outerDiameter, 2) - Math.pow(innerDiameter, 2));
         totalArea = areaOfCircle * Length;
+
+        basicCost = totalArea * gradeCost;
+
+        if (pipeColour.getSelectedItem() == "1") {
+            costMulitiplier += 0.12;
+        } else if (pipeColour.getSelectedItem() == "2") {
+            costMulitiplier += 0.16;
+        }
+        if (innerInsulation.getSelectedItem() == "Yes") {
+            costMulitiplier += 0.13;
+        }
+
+        if (outerReinforcement.getSelectedItem() == "Yes") {
+            costMulitiplier += 0.17;
+        }
+
+        if (chemicalResistance.getSelectedItem() == "Yes") {
+            costMulitiplier += 0.14;
+        }
         
-        Result = totalArea * costMultiplier;
         
-        resultOutput.setText(String.valueOf(Result));
+
+        totalCost = basicCost + (basicCost * costMulitiplier);
+
+        resultOutput.setText(String.valueOf(totalCost));
+        //Object[] row = {grade, pipeColour.getSelectedItem(), innerInsulation.getSelectedItem(), outerReinforcement.getSelectedItem(), chemicalResistance.getSelectedItem()};
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void pipeColourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeColourActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_pipeColourActionPerformed
 
     /**
      * @param args the command line arguments
@@ -353,12 +392,10 @@ public class PipeInterface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ResultTable;
+    private javax.swing.JComboBox<String> chemicalResistance;
+    private javax.swing.JComboBox<String> innerInsulation;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -370,6 +407,8 @@ public class PipeInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> outerReinforcement;
+    private javax.swing.JComboBox<String> pipeColour;
     private javax.swing.JTextField pipeDiameter;
     private javax.swing.JComboBox<String> pipeGrade;
     private javax.swing.JTextField pipeLength;
