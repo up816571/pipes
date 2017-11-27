@@ -37,7 +37,7 @@ public class LongPipes {
         areaOfPipe = totalArea;
     }
 
-    public double getBaseCost(int plasticGrade) {
+    public static double getBaseCost(int plasticGrade) {
         switch (plasticGrade) {
             case 1:
                 return 0.4;
