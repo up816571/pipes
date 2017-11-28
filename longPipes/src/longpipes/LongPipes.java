@@ -6,25 +6,26 @@ public class LongPipes {
     private double areaOfPipe;
     private double lengthOfPipe; //in meters
     private int quantityOfPipe;
-    private double costMultiplier;
     private boolean chemicalResistance;
     private int plasticGrade;
-    private double baseCost;
     private int colourPrint;
-    private boolean innerInsulation; //move me 
-    private boolean outerReinforcement; //Move these
+    private double baseCost;
+    private double costMultiplier;
     private double totalCost;
+    
 
     public LongPipes() {
     }
 
     //pipe constructor
-    public LongPipes(boolean chemicalResistance, double outerDiameter, double lengthOfPipe, int quantityOfPipe, int plasticGrade) {
+    public LongPipes(boolean chemicalResistance, double outerDiameter, double lengthOfPipe, 
+            int quantityOfPipe, int plasticGrade, int colour) {
         this.chemicalResistance = chemicalResistance;
         this.outerDiameter = outerDiameter;
         this.lengthOfPipe = convertToInches(lengthOfPipe);
         this.quantityOfPipe = quantityOfPipe;
         this.plasticGrade = plasticGrade;
+        this.colourPrint = colour;
     }
 
     public double convertToInches(double meters) {
@@ -38,29 +39,12 @@ public class LongPipes {
         double totalArea;
         areaOfCircle = Math.PI * (Math.pow(outerDiameter, 2) - Math.pow(innerDiamter, 2));
         totalArea = areaOfCircle * lengthOfPipe;
-        areaOfPipe = totalArea;
+        this.areaOfPipe = totalArea;
     }
     
     public void calculateTotalCost() {
-        totalCost = (baseCost * costMultiplier * quantityOfPipe);
+        this.totalCost = ((baseCost * areaOfPipe) * costMultiplier * quantityOfPipe);
     } 
-
-    public static double getBaseCost(int plasticGrade) {
-        switch (plasticGrade) {
-            case 1:
-                return 0.4;
-            case 2: 
-                return 0.6;
-            case 3:
-                return 0.75;
-            case 4:
-                return 0.8;
-            case 5:
-                return 0.95;
-            default: 
-                return 0.0;
-        }
-    }
 
     //getter functions
     public double getOuterDiameter() {
@@ -89,6 +73,10 @@ public class LongPipes {
 
      public int getColour() {
         return colourPrint;
+    }
+    
+    public double getTotalCost() {
+        return totalCost;
     }
     
     //setters **finish later

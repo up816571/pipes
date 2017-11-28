@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package longpipes;
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -68,7 +68,7 @@ public class PipeInterface extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Avaliable Additional Options for Pipe"));
 
-        innerInsulation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        innerInsulation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
 
         jLabel5.setText("Inner Insulation ");
 
@@ -76,7 +76,7 @@ public class PipeInterface extends javax.swing.JFrame {
 
         jLabel7.setText("Outer Reinforcement");
 
-        outerReinforcement.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        outerReinforcement.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
 
         pipeColour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2" }));
         pipeColour.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +87,12 @@ public class PipeInterface extends javax.swing.JFrame {
 
         jLabel2.setText("Colour Print Number 0");
 
-        chemicalResistance.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        chemicalResistance.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
+        chemicalResistance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chemicalResistanceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -285,17 +290,15 @@ public class PipeInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            double basicCost;
-        double totalCost;
         double Length = 1;
         double outerDiameter = 1;
-        double innerDiameter;
         int quantity = 1;
-        double areaOfCircle;
-        double totalArea;
         int grade = 1;
-        double gradeCost;
-        double costMulitiplier = 0;
+        int colour = 0;
+        boolean reinforcement = false;
+        boolean insulation = false;
+        boolean resistance = false;
+        double totalCost = 0;
 
         if (Length < 0.5 || Length > 6 ){
             
@@ -310,38 +313,35 @@ public class PipeInterface extends javax.swing.JFrame {
         }
         
         grade = pipeGrade.getSelectedIndex() + 1;
-        gradeCost = LongPipes.getBaseCost(grade);
-
-        Length = Integer.parseInt(pipeLength.getText()) / 0.0254;
+        Length = Integer.parseInt(pipeLength.getText());
+        quantity = Integer.parseInt(pipeQuantity.getText());
         outerDiameter = Integer.parseInt(pipeDiameter.getText());
-        innerDiameter = outerDiameter * 0.9;
-        areaOfCircle = Math.PI * (Math.pow(outerDiameter, 2) - Math.pow(innerDiameter, 2));
-        totalArea = areaOfCircle * Length;
-
-        basicCost = totalArea * gradeCost;
-
-        if (pipeColour.getSelectedItem() == "1") {
-            costMulitiplier += 0.12;
-        } else if (pipeColour.getSelectedItem() == "2") {
-            costMulitiplier += 0.16;
-        }
-        if (innerInsulation.getSelectedItem() == "Yes") {
-            costMulitiplier += 0.13;
-        }
-
-        if (outerReinforcement.getSelectedItem() == "Yes") {
-            costMulitiplier += 0.17;
-        }
-
-        if (chemicalResistance.getSelectedItem() == "Yes") {
-            costMulitiplier += 0.14;
-        }
+        colour = pipeColour.getSelectedIndex() + 1;
+        if (chemicalResistance.getSelectedIndex() == 1) {
+            resistance = true;
+        } else {resistance = false;}
+        if (innerInsulation.getSelectedIndex() == 1) {
+            insulation = true;
+        } else {insulation = false;}
+        if (outerReinforcement.getSelectedIndex() == 1) {
+            reinforcement = true;
+        } else {reinforcement = false;}
         
         
+        
+        if ((grade >= 1 && grade <= 3) && colour == 0 && insulation == false && reinforcement == false) {
+            pipeType1 v1 = new pipeType1(resistance, outerDiameter, Length, quantity, grade, colour);
+        } else if ((grade >= 2 && grade <= 4) && colour == 1 && insulation == false && reinforcement == false) {
+            pipeType2 v2 = new pipeType2(resistance, outerDiameter, Length, quantity, grade, colour);
+        } else if ((grade >= 2 && grade <= 5) && colour == 2 && insulation == false && reinforcement == false) {
+            pipeType3 v3 = new pipeType3(resistance, outerDiameter, Length, quantity, grade, colour);
+        } else if ((grade >= 2 && grade <= 5) && colour == 2 && insulation == true && reinforcement == false) {
+            pipeType4 v4 = new pipeType4(resistance, outerDiameter, Length, quantity, grade, colour, insulation );
+        } else if ((grade >= 3 && grade <= 5) && colour == 2 && insulation == true && reinforcement == true) {
+            pipeType5 v5 = new pipeType5(resistance, outerDiameter, Length, quantity, grade, colour, insulation, reinforcement);
+        }
 
-        totalCost = basicCost + (basicCost * costMulitiplier);
-
-        resultOutput.setText(String.valueOf(totalCost));
+        //resultOutput.setText(String.valueOf(v1.getTotalCost()));
         //Object[] row = {grade, pipeColour.getSelectedItem(), innerInsulation.getSelectedItem(), outerReinforcement.getSelectedItem(), chemicalResistance.getSelectedItem()};
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -353,6 +353,10 @@ public class PipeInterface extends javax.swing.JFrame {
     private void pipeColourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeColourActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pipeColourActionPerformed
+
+    private void chemicalResistanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chemicalResistanceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chemicalResistanceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -386,6 +390,7 @@ public class PipeInterface extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PipeInterface().setVisible(true);
+                ArrayList<LongPipes> pipes = new ArrayList<LongPipes>();
             }
         });
     }

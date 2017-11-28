@@ -250,8 +250,8 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
-                <StringItem index="0" value="Yes"/>
-                <StringItem index="1" value="No"/>
+                <StringItem index="0" value="No"/>
+                <StringItem index="1" value="Yes"/>
               </StringArray>
             </Property>
           </Properties>
@@ -278,8 +278,8 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
-                <StringItem index="0" value="Yes"/>
-                <StringItem index="1" value="No"/>
+                <StringItem index="0" value="No"/>
+                <StringItem index="1" value="Yes"/>
               </StringArray>
             </Property>
           </Properties>
@@ -313,11 +313,14 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
-                <StringItem index="0" value="Yes"/>
-                <StringItem index="1" value="No"/>
+                <StringItem index="0" value="No"/>
+                <StringItem index="1" value="Yes"/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chemicalResistanceActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
