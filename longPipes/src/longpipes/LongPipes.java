@@ -29,21 +29,19 @@ public class LongPipes {
     }
 
     public double convertToInches(double meters) {
-        return (meters / 0.0254);
+        return (meters * 39.37);
     }
 
     //formula needs checking :P
     public void calculateArea() {
         double areaOfCircle;
         double innerDiamter = outerDiameter * 0.9;
-        double totalArea;
-        areaOfCircle = Math.PI * (Math.pow(outerDiameter, 2) - Math.pow(innerDiamter, 2));
-        totalArea = areaOfCircle * lengthOfPipe;
-        this.areaOfPipe = totalArea;
+        areaOfCircle = Math.PI * (Math.pow((outerDiameter / 2), 2) - Math.pow((innerDiamter/ 2), 2));
+        this.areaOfPipe = areaOfCircle * lengthOfPipe;
     }
     
     public void calculateTotalCost() {
-        this.totalCost = ((baseCost * areaOfPipe) * costMultiplier * quantityOfPipe);
+        this.totalCost = baseCost * areaOfPipe * costMultiplier * quantityOfPipe;
     } 
 
     //getter functions

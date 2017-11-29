@@ -14,9 +14,9 @@ public class pipeType4 extends pipeType3{
         
         this.setBaseCost(0.8);
         if (chemicalResistance) {
-            this.setCostMultiplier(1.55);
+            this.setCostMultiplier(1.43);
         } else {
-            this.setCostMultiplier(1.41);
+            this.setCostMultiplier(1.29);
         }
         
         calculateArea();

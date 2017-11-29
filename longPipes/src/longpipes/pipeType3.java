@@ -9,9 +9,9 @@ public class pipeType3 extends LongPipes{
         
         this.setBaseCost(0.75);
         if (chemicalResistance) {
-            this.setCostMultiplier(1.42);
+            this.setCostMultiplier(1.30);
         } else {
-            this.setCostMultiplier(1.28);
+            this.setCostMultiplier(1.16);
         }
         
         calculateArea();
