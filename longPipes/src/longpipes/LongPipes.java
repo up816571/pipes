@@ -13,7 +13,6 @@ public class LongPipes {
     private double costMultiplier;
     private double totalCost;
     
-
     public LongPipes() {
     }
 
@@ -31,6 +30,10 @@ public class LongPipes {
     public double convertToInches(double meters) {
         return (meters * 39.37);
     }
+    
+    public double roundUp(double value) {
+        return (double) Math.round(value * 100.0) / 100.0; 
+    }
 
     //formula needs checking :P
     public void calculateArea() {
@@ -41,7 +44,7 @@ public class LongPipes {
     }
     
     public void calculateTotalCost() {
-        this.totalCost = baseCost * areaOfPipe * costMultiplier * quantityOfPipe;
+        this.totalCost =  roundUp(baseCost * areaOfPipe * costMultiplier * quantityOfPipe);
     } 
 
     //getter functions
