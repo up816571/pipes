@@ -1,6 +1,4 @@
 # pipes
 
 Todo 
--Validation for 3 input boxes
--Validation for being int/double on input boxes
--Initilise inputs
+-Fix validation for 2 checkboxes enable/disable
