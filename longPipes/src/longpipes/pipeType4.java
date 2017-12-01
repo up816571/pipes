@@ -12,7 +12,7 @@ public class pipeType4 extends pipeType3{
                 quantityOfPipe, plasticGrade, colour);
         this.innerInsulation = innerInsulation;
         
-        this.setBaseCost(0.8);
+        this.setBaseCost(getBaseCost(plasticGrade));
         if (chemicalResistance) {
             this.setCostMultiplier(1.43);
         } else {

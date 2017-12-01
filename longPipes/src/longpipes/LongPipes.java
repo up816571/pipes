@@ -34,6 +34,17 @@ public class LongPipes {
     public double roundUp(double value) {
         return (double) Math.round(value * 100.0) / 100.0; 
     }
+    
+    public double getBaseCost(int grades) {
+        switch (grades) {
+            case 1: return 0.4;
+            case 2: return 0.6;
+            case 3: return 0.75;
+            case 4: return 0.8;
+            case 5: return 0.95;
+            default: return 0.4;
+        }
+    }
 
     //formula needs checking :P
     public void calculateArea() {

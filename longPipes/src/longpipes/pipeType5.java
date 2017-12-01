@@ -11,7 +11,7 @@ public class pipeType5 extends pipeType4 {
                 quantityOfPipe, plasticGrade, colour, innerInsulation);
         this.outerReinforcement = outerReinforcement;
 
-        this.setBaseCost(0.95);
+        this.setBaseCost(getBaseCost(plasticGrade));
         if (chemicalResistance) {
             this.setCostMultiplier(1.60);
         } else {

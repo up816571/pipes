@@ -7,7 +7,7 @@ public class pipeType3 extends LongPipes{
         super(chemicalResistance, outerDiameter, lengthOfPipe,
                 quantityOfPipe, plasticGrade, colour);
         
-        this.setBaseCost(0.75);
+        this.setBaseCost(getBaseCost(plasticGrade));
         if (chemicalResistance) {
             this.setCostMultiplier(1.30);
         } else {
