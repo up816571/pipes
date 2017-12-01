@@ -22,10 +22,10 @@ import longpipes.pipeType5;
 public class PipeInterface extends javax.swing.JFrame {
 
     private ArrayList<LongPipes> pipes = new ArrayList<LongPipes>();
-    private double length;
-    private double outerDiameter;
-    private int quantity;
-    private int grade;
+    private double length = 0.5;
+    private double outerDiameter = 1;
+    private int quantity = 1;
+    private int grade = 1;
     private int colour;
     private boolean reinforcement;
     private boolean insulation;
@@ -39,19 +39,20 @@ public class PipeInterface extends javax.swing.JFrame {
      */
     public PipeInterface() {
         initComponents();
+        pipeGrade.setSelectedIndex(0);
     }
 
     public void addPipe() {
-        if ((grade >= 1 && grade <= 3) && colour == 0 && insulation == false && reinforcement == false) {
+        if ((grade >= 1 && grade <= 3) && colour == 0 /*&& insulation == false && reinforcement == false*/) {
             pipes.add(new pipeType1(resistance, outerDiameter, length, quantity, grade, colour));
             checked = true;
-        } else if ((grade >= 2 && grade <= 4) && colour == 1 && insulation == false && reinforcement == false) {
+        } else if ((grade >= 2 && grade <= 4) && colour == 1 /*&& insulation == false && reinforcement == false*/) {
             pipes.add(new pipeType2(resistance, outerDiameter, length, quantity, grade, colour));
             checked = true;
-        } else if ((grade >= 2 && grade <= 5) && colour == 2 && insulation == false && reinforcement == false) {
+        } else if ((grade >= 2 && grade <= 5) && colour == 2 /*&& insulation == false && reinforcement == false*/) {
             pipes.add(new pipeType3(resistance, outerDiameter, length, quantity, grade, colour));
             checked = true;
-        } else if ((grade >= 2 && grade <= 5) && colour == 2 && insulation == true && reinforcement == false) {
+        } else if ((grade >= 2 && grade <= 5) && colour == 2 && insulation == true /*&& reinforcement == false*/) {
             pipes.add(new pipeType4(resistance, outerDiameter, length, quantity, grade, colour, insulation));
             checked = true;
         } else if ((grade >= 3 && grade <= 5) && colour == 2 && insulation == true && reinforcement == true) {
@@ -65,9 +66,9 @@ public class PipeInterface extends javax.swing.JFrame {
     
     public void resetBoxes() {
         pipeGrade.setSelectedIndex(0);
-        pipeLength.setText("");
-        pipeDiameter.setText("");
-        pipeQuantity.setText("");
+        pipeLength.setText("0.5");
+        pipeDiameter.setText("1");
+        pipeQuantity.setText("1");
         pipeColour.setSelectedIndex(0);
         chemResistance.setSelected(false);
         innerInsulation.setSelected(false);
@@ -97,7 +98,7 @@ public class PipeInterface extends javax.swing.JFrame {
             tableChemical = "No";
         }
         DefaultTableModel model = (DefaultTableModel) pipeTable.getModel();
-        model.addRow(new Object[]{"1", grade, colour, tableInner, tableOuter, tableChemical,
+        model.addRow(new Object[]{"Box needs values!", grade, colour, tableInner, tableOuter, tableChemical,
             pipes.get(endOfArr).getTotalCost(), totalOrderCost});
     }
 
@@ -256,6 +257,7 @@ public class PipeInterface extends javax.swing.JFrame {
 
         jLabel9.setText("Length of Pipe (m)");
 
+        pipeLength.setText("0.5");
         pipeLength.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 pipeLengthFocusLost(evt);
@@ -264,6 +266,7 @@ public class PipeInterface extends javax.swing.JFrame {
 
         jLabel10.setText("Diameter of Pipe (in)");
 
+        pipeDiameter.setText("1");
         pipeDiameter.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 pipeDiameterFocusLost(evt);
@@ -283,6 +286,7 @@ public class PipeInterface extends javax.swing.JFrame {
 
         jLabel11.setText("Quantity of Pipes");
 
+        pipeQuantity.setText("1");
         pipeQuantity.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 pipeQuantityFocusLost(evt);
@@ -425,6 +429,7 @@ public class PipeInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
+        checked = true;
         addPipe();
         if (checked) {
             totalOrderCost = 0;
@@ -445,9 +450,21 @@ public class PipeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_closeActionPerformed
 
     private void pipeColourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeColourActionPerformed
-        int input;
-        input = pipeColour.getSelectedIndex();
-        colour = input;
+        String input;
+        int converter; 
+        input =  String.valueOf(pipeColour.getSelectedItem());
+        converter = Integer.parseInt(input);
+        colour = converter;
+        
+//        innerInsulation.setEnabled(true);
+//        outerRein.setEnabled(true);
+        
+        if (converter >= 0 && converter <= 1) {
+            innerInsulation.setEnabled(false);
+            innerInsulation.setSelected(false);
+        } else if (converter == 2){
+            innerInsulation.setEnabled(true);
+        }
     }//GEN-LAST:event_pipeColourActionPerformed
 
     private void chemResistanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chemResistanceActionPerformed
@@ -461,8 +478,15 @@ public class PipeInterface extends javax.swing.JFrame {
     private void innerInsulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_innerInsulationActionPerformed
         if (innerInsulation.isSelected()) {
             insulation = true;
+            outerRein.setEnabled(true);
         } else {
             insulation = false;
+            outerRein.setEnabled(false);
+            outerRein.setSelected(false);
+        }
+        if (grade == 2) {
+            outerRein.setEnabled(false);
+            outerRein.setSelected(false);
         }
     }//GEN-LAST:event_innerInsulationActionPerformed
 
@@ -481,17 +505,23 @@ public class PipeInterface extends javax.swing.JFrame {
 
         pipeColour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"0", "1", "2"}));
         pipeColour.setEnabled(true);
-        innerInsulation.setEnabled(true);
-        outerRein.setEnabled(true);
 
         if (input == 1) {
             pipeColour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"0"}));
             pipeColour.setEnabled(false);
             innerInsulation.setEnabled(false);
+            innerInsulation.setSelected(false);
             outerRein.setEnabled(false);
-
-        } else {
+            outerRein.setSelected(false);
+        } else if (input == 2){
+            pipeColour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"0","1", "2"}));
+        } else if (input == 3) {
+            pipeColour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"0","1", "2"}));
+        } else if (input == 4) {
             pipeColour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"1", "2"}));
+        } else if (input == 5) {
+            pipeColour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"2"}));
+            pipeColour.setSelectedIndex(0);
         }
     }//GEN-LAST:event_pipeGradeActionPerformed
 
@@ -501,11 +531,16 @@ public class PipeInterface extends javax.swing.JFrame {
             input = Double.parseDouble(pipeLength.getText());
             if (input >= 0.5 && input <= 6) {
                 length = input;
-            } else {
-                length = 0;
+            } else if (input <  0.5) {
+                pipeLength.setText("0.5");
+                length = 0.5;
+            } else if (input > 6) {
+                pipeLength.setText("6");
+                length = 6;
             }
         } catch (Exception e) {
-            //do error
+            pipeLength.setText("0.5");
+            length = 0.5;
         }
     }//GEN-LAST:event_pipeLengthFocusLost
 
@@ -513,11 +548,18 @@ public class PipeInterface extends javax.swing.JFrame {
         double input;
         try {
             input = Double.parseDouble(pipeDiameter.getText());
-            if (input >= 0.5 && input <= 20) {
+            if (input >= 1 && input <= 20) {
                 outerDiameter = input;
+            } else if (input <  1) {
+                pipeDiameter.setText("1");
+                outerDiameter = 1;
+            } else if (input > 20) {
+                pipeDiameter.setText("20");
+                outerDiameter = 20;
             }
         } catch (Exception e) {
-            //do error
+            pipeDiameter.setText("1");
+            outerDiameter = 1;
         }
     }//GEN-LAST:event_pipeDiameterFocusLost
 
@@ -527,9 +569,16 @@ public class PipeInterface extends javax.swing.JFrame {
             input = parseInt(pipeQuantity.getText());
             if (input >= 1 && input <= 20) {
                 quantity = input;
+            } else if (input <  1) {
+                pipeQuantity.setText("1");
+                quantity = 1;
+            } else if (input > 20) {
+                pipeQuantity.setText("20");
+                quantity = 20;
             }
         } catch (Exception e) {
-            //do error
+            pipeQuantity.setText("1");
+            quantity = 1;
         }
     }//GEN-LAST:event_pipeQuantityFocusLost
 
