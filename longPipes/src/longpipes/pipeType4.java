@@ -1,15 +1,25 @@
 package longpipes;
 
 /**
- *The class parameters are defined from pipeType3 class 
- * which shares some of the same parameters apart from innerInsulation parameter  
- * which can only be found in this class
- * and have being extend to this class to be used in various methods 
+ * @author up815386, up816571, up817807, up818360
+ * 
+ * The class parameters are inherited from pipeType3 class 
+ * This class also adds the inner insulation parameter and getter function
  */
 public class pipeType4 extends pipeType3{
     
-    private boolean innerInsulation;
-    //constructor 
+    private final boolean innerInsulation;
+    
+    /**
+     * 
+     * @param chemicalResistance
+     * @param outerDiameter
+     * @param lengthOfPipe
+     * @param quantityOfPipe
+     * @param plasticGrade
+     * @param colour
+     * @param innerInsulation used in pipe type 4 and 5
+     */ 
     public pipeType4(boolean chemicalResistance, double outerDiameter, 
             double lengthOfPipe, int quantityOfPipe, int plasticGrade,
             int colour, boolean innerInsulation) {
@@ -18,12 +28,7 @@ public class pipeType4 extends pipeType3{
                 quantityOfPipe, plasticGrade, colour);
         this.innerInsulation = innerInsulation;
         
-         /**
-         * this sets the base cost by calling the getBastCost method 
-         * and the plasticGrade is used as the parameter 
-         * the answer is then used to set the base cost 
-         * by calling the setBaseCost() setter method 
-         */
+        //this sets the base cost by calling setBaseCost() setter method 
         this.setBaseCost(getBaseCost(plasticGrade));
         
          /**
@@ -38,21 +43,18 @@ public class pipeType4 extends pipeType3{
         } else {
             this.setCostMultiplier(1.29);//2 colour + innersulation
         }
+       
         
-        /**
-         * The calculateArea method is called to find the area of the pipe 
-         * so it can be used to find the total cost 
-         */
+        //The calculateArea method is called to find the area of the pipe  
         calculateArea();
         
-        /**calculates the total cost
-         * by using the factors in this class 
-         * which are baseCost,costMultipelier , areaOfpipe and quantityOfPipe 
-         */
+        //calculates the total cost
         calculateTotalCost();
     }
-    
-    //getter function
+
+    /**
+     * @return returns the boolean value if pipe has insulation 
+     */
     public boolean getInsulation() {
         /**returns a true boolean
          *saying its got innerInsulation 

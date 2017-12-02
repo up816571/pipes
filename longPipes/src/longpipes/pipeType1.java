@@ -1,23 +1,29 @@
 package longpipes;
 
 /**
- *The class parameters are defined from the LongPipes class 
- * and have being extend to this class to be used in various methods 
+ * @author up815386, up816571, up817807, up818360
+ * 
+ * The class parameters are defined from the LongPipes class 
+ * This class stores a pipe of type 1 and its subsequent cost
  */
 public class pipeType1 extends LongPipes {
     
-    //constructor
+    /**
+     * 
+     * @param chemicalResistance
+     * @param outerDiameter
+     * @param lengthOfPipe
+     * @param quantityOfPipe
+     * @param plasticGrade
+     * @param colour 
+     */
     public pipeType1(boolean chemicalResistance, double outerDiameter, double lengthOfPipe, int quantityOfPipe, int plasticGrade, int colour) {
         super(chemicalResistance, outerDiameter, lengthOfPipe, 
                 quantityOfPipe, plasticGrade, colour);
         
-        /**
-         * this sets the base cost by calling the getBastCost method 
-         * and the plasticGrade is used as the parameter 
-         * the answer is then used to set the base cost 
-         * by calling the setBaseCost() setter method 
-         */
+        //this sets the base cost calling the setBaseCost() setter method 
         this.setBaseCost(getBaseCost(plasticGrade));
+        
         /**
          * The costMuiltiplier is set by weather the user 
          * requires chemical chemical resistance or not 
@@ -29,17 +35,11 @@ public class pipeType1 extends LongPipes {
             this.setCostMultiplier(1);//nothing added 
         }
         
-        /**
-         * The calculateArea method is called to find the area of the pipe 
-         * so it can be used to find the total cost 
-         */
+        //The calculateArea method is called to find the area of the pipe 
         calculateArea();
         
-        /**calculates the total cost
-         * by using the factors in this class 
-         * which are baseCost,costMultipelier , areaOfpipe and quantityOfPipe 
-         */
-         calculateTotalCost();
+        //calculates the total cost
+        calculateTotalCost();
     }
 }
 

@@ -1,38 +1,43 @@
 package longpipes;
 
 /**
- *The class parameters are defined from pipeType4 class 
- * which shares some of the same parameters 
- * as well as from innerInsulation parameter  
- * which can only be found in this class 4 and 5 
- * this class also includes outerReinforement parameter 
- * which is found only in this class 
- * and they have being extend to this class to be used to call methods 
+ * @author up815386, up816571, up817807, up818360
+ * 
+ * The class parameters are inherited from pipeType4 class 
+ * This class also includes outerReinforement parameter 
+ * Also includes get method for reinforcements
  */
 
 public class pipeType5 extends pipeType4 {
 
-    private boolean outerReinforcement;
+    private final boolean outerReinforcement;
 
+    /**
+     * @param chemicalResistance
+     * @param outerDiameter
+     * @param lengthOfPipe
+     * @param quantityOfPipe
+     * @param plasticGrade
+     * @param colour
+     * @param innerInsulation
+     * @param outerReinforcement is used for calculating cost multiplier
+     */
     public pipeType5(boolean chemicalResistance, double outerDiameter,
             double lengthOfPipe, int quantityOfPipe, int plasticGrade, int colour,
             boolean innerInsulation, boolean outerReinforcement) {
         super(chemicalResistance, outerDiameter, lengthOfPipe,
                 quantityOfPipe, plasticGrade, colour, innerInsulation);
+        
+        //sets the Reinforcment
         this.outerReinforcement = outerReinforcement;
         
-         /**
-         * this sets the base cost by calling the getBastCost method 
-         * and the plasticGrade is used as the parameter 
-         * the answer is then used to set the base cost 
-         * by calling the setBaseCost() setter method 
-         */
+        //this sets the base cost by calling the setBaseCost() setter method 
         this.setBaseCost(getBaseCost(plasticGrade));
         
         /**
          * The costMuiltiplier is set by weather the user 
          * requires chemical chemical resistance or not 
-         * and requires 2 colours.innerInsulation and outterReinforcement
+         * and requires 2 colours, innerInsulation and outterReinforcement
          * meaning its a type 5 pipe 
          */
         if (chemicalResistance) {
@@ -42,20 +47,17 @@ public class pipeType5 extends pipeType4 {
             this.setCostMultiplier(1.46);
          //2 colour + innersulation + outterReinforement
         }
-        
-        /**
-         * The calculateArea method is called to find the area of the pipe 
-         * so it can be used to find the total cost 
-         */
+
+        //The calculateArea method is called to find the area of the pipe 
         calculateArea();
         
-        /**calculates the total cost
-         * by using the factors in this class 
-         * which are baseCost,costMultipelier , areaOfpipe and quantityOfPipe 
-         */
+        //calculates the total cost
         calculateTotalCost();
     }
-    //getter function 
+    
+    /**
+     * @return gives the reinforcement value
+     */
     public boolean getReinforcement() {
         /**returns a true boolean
          *saying its got outterReinforcement
