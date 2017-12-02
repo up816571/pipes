@@ -29,7 +29,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblChoosePlasticGrade" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="pipeGrade" min="-2" max="-2" attributes="0"/>
@@ -37,17 +37,17 @@
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel9" max="32767" attributes="0"/>
+                          <Component id="lblLengthOfPipe" max="32767" attributes="0"/>
                           <Component id="pipeLength" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel10" max="32767" attributes="0"/>
+                          <Component id="lblDiameterOfPipe" max="32767" attributes="0"/>
                           <Component id="pipeDiameter" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel11" max="32767" attributes="0"/>
+                          <Component id="lblQuantityOfPipes" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="pipeQuantity" min="-2" pref="116" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -56,7 +56,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel1" max="32767" attributes="0"/>
+                      <Component id="jPanAdditionalOptions" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -68,8 +68,8 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel4" max="32767" attributes="0"/>
-                                  <Component id="jLabel8" max="32767" attributes="0"/>
+                                  <Component id="lblSingleItemCost" max="32767" attributes="0"/>
+                                  <Component id="lblTotalCost" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -89,7 +89,7 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="840" max="-2" attributes="0"/>
+              <Component id="jScrPanOrder" min="-2" pref="840" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -99,10 +99,10 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblChoosePlasticGrade" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblLengthOfPipe" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDiameterOfPipe" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblQuantityOfPipes" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -112,19 +112,19 @@
                   <Component id="pipeQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <Component id="jPanAdditionalOptions" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="111" max="-2" attributes="0"/>
+              <Component id="jScrPanOrder" min="-2" pref="111" max="-2" attributes="0"/>
               <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblSingleItemCost" min="-2" max="-2" attributes="0"/>
                           <Component id="singleOut" min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTotalCost" min="-2" max="-2" attributes="0"/>
                           <Component id="resultOutput" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -149,7 +149,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submitActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="lblChoosePlasticGrade">
       <Properties>
         <Property name="text" type="java.lang.String" value="Choose Plastic Grade"/>
       </Properties>
@@ -173,7 +173,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="jPanAdditionalOptions">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -321,7 +321,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel9">
+    <Component class="javax.swing.JLabel" name="lblLengthOfPipe">
       <Properties>
         <Property name="text" type="java.lang.String" value="Length of Pipe (m)"/>
       </Properties>
@@ -334,7 +334,7 @@
         <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="pipeLengthFocusLost"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel10">
+    <Component class="javax.swing.JLabel" name="lblDiameterOfPipe">
       <Properties>
         <Property name="text" type="java.lang.String" value="Diameter of Pipe (in)"/>
       </Properties>
@@ -365,12 +365,12 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
+    <Component class="javax.swing.JLabel" name="lblTotalCost">
       <Properties>
         <Property name="text" type="java.lang.String" value="Total cost"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel11">
+    <Component class="javax.swing.JLabel" name="lblQuantityOfPipes">
       <Properties>
         <Property name="text" type="java.lang.String" value="Quantity of Pipes"/>
       </Properties>
@@ -390,7 +390,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="lblSingleItemCost">
       <Properties>
         <Property name="text" type="java.lang.String" value="Single item cost"/>
       </Properties>
@@ -404,7 +404,7 @@
         </Property>
       </Properties>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+    <Container class="javax.swing.JScrollPane" name="jScrPanOrder">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
