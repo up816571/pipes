@@ -1,4 +1,5 @@
 # pipes
 
 Todo 
--Fix validation for 2 checkboxes enable/disable
+-Add error messages
+-Maybe change the way cost multipplier is worked out
